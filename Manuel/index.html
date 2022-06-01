@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        img{
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container w-50 mt-5">
+        <form id="form1">
+            <input type="text" id="fName" class="form-control mb-3" placeholder="first name">
+            <input type="text" id="lName" class="form-control mb-3" placeholder="last name">
+            <input type="number" name="age" id="age" class="form-control mb-3">
+            <select name="prof" id="prof">
+                <option value="it">IT</option>
+                <option value="hosp">Hospitality</option>
+                <option value="some">Something</option>
+                <option value="other">Other</option>
+            </select>
+            <input type="submit" value="submit">
+        </form>
+    </div>
+
+    <div id="result"></div>
+
+    <div class="container mt-5" id="game">
+        <div class="row row-cols-3 g-5 w-50">
+            <div class="col"><img src="White_Gift_Box.png" alt=""></div>
+            <div class="col"><img src="santa-claus.png" alt=""></div>
+            <div class="col"><img src="White_Gift_Box.png" alt=""></div>
+            <div class="col"><img src="White_Gift_Box.png" alt=""></div>
+            <div class="col"><img src="santa-claus.png" alt=""></div>
+            <div class="col"><img src="White_Gift_Box.png" alt=""></div>
+            <div class="col"><img src="santa-claus.png" alt=""></div>
+            <div class="col"><img src="White_Gift_Box.png" alt=""></div>
+            <div class="col"><img src="santa-claus.png" alt=""></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("form1").addEventListener("submit", getData);
+        const target = document.getElementById("result");
+
+        // basic
+        // ex1 & ex2
+        function getData(){
+            event.preventDefault();
+            let fName = document.getElementById("fName").value;
+            let lName = document.getElementById("lName").value;
+            let age = document.getElementById("age").value;
+            let prof = document.getElementById("prof").value;
+            const formArr = [fName, lName, age, prof];
+            
+
+            for(let i = 0; i < formArr.length; i++){
+                let color = "red";
+                let bgColor = "";
+                if(formArr[i].length > 5){color = "green"}
+                switch(prof){
+                    case "it":
+                        bgColor = "purple";
+                        break;
+                    case "hosp":
+                        bgColor = "yellow";
+                        break;
+                    default:
+                        bgColor = "";
+                }
+                target.innerHTML += `<div style="color: ${color}; background-color: ${bgColor}">${formArr[i]}</div>`
+            }
+        }
+
+        // inter
+        // ex1
+
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
